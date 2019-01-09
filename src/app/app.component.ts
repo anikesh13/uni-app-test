@@ -22,6 +22,14 @@ export class AppComponent implements OnInit {
       
     })
 
+    if(localStorage.getItem('logIn')){
+      console.log('log In');
+      
+    }else{
+      console.log('not log in');
+      
+    }
+
     let user = JSON.parse(localStorage.getItem('list1'));
     console.log('xxxxxxx xxxxxxxxxxxxx xxxxxxxxx logged user is ', user);
   }
