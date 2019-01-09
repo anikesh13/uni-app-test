@@ -25,6 +25,10 @@ export class LogService {
     return this.http.post(this.url, data);
   }
 
+  delDetails(id:any):Observable<any> {
+    return this.http.delete(this.url+'/'+id);
+  }
+
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('logIn');
     return !helper.isTokenExpired(token);

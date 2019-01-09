@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { AsPipe } from './as.pipe';
 
 
 let config = new AuthServiceConfig([
@@ -36,7 +37,8 @@ export function provideConfig() {
     AppComponent,
     LoginComponent,
     PageNotFoundComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    AsPipe
   ],
   imports: [
     BrowserModule,

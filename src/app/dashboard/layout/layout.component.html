@@ -2,8 +2,8 @@
 <h1>Dashboard Layout</h1>
 
 <ul>
-  <li *ngFor="let hero of heroes">
-    <button (click)="data(hero)"> {{ hero.email }}</button>
+  <li *ngFor="let hero of heroes;index as i">
+    <button (click)="data(hero)"> {{ hero.email }}</button>|<button (click)="hel(hero._id, i)">delete</button>
   </li>
 </ul>
 <div >

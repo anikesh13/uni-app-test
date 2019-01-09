@@ -28,4 +28,18 @@ export class LayoutComponent implements OnInit {
     this.info = a;
   }
 
+  Submit() {
+    console.log(this.info);
+    this.log.regDetails(this.info).subscribe(res => {
+      this.router.navigate(['']);
+    });
+  }
+
+  hel(id,i?) {
+    this.heroes.splice(i,1);
+    this.log.delDetails(id).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['']);
+    });
+  }
 }
