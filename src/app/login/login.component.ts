@@ -26,21 +26,32 @@ export class LoginComponent implements OnInit {
   }
 
   signInWithGoogle(): void {
+    console.log('1');
     var t = this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    console.log(t);
-    this.router.navigate(['']);
+    this.authService.authState.subscribe((user3) => {
+      console.log(user3);
+      localStorage.setItem('logIn', user3.authToken)
+      this.router.navigate(['']);
+    });
   }
 
   signInWithFB(): void {
+    console.log('2');
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
       console.log(user);
+      localStorage.setItem('logIn', user.authToken)
       this.router.navigate(['']);
     });
   }
 
   signInWithLinkedIn(): void {
+    console.log('3');
     var t1 = this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID);
-    console.log(t1);
+    this.authService.authState.subscribe((user1) => {
+      console.log(user1);
+      localStorage.setItem('logIn', user1.authToken)
+      this.router.navigate(['']);
+    });
   }
 }

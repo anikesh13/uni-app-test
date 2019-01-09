@@ -9,4 +9,5 @@ export interface regIn {
    cell: any;
    email: any;
    password: string;
+   _id:string
 }
