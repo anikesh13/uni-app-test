@@ -4,8 +4,8 @@ export interface logIn {
 }
 
 export interface regIn {
-   firstname: string;
-   lastname: string;
+   firstName: string;
+   lastName: string;
    cell: any;
    email: any;
    password: string;

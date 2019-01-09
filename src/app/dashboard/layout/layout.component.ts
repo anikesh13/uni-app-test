@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-  public heroes: Array<regIn>; 
+  public heroes: Array<regIn>;
+  info: regIn = <regIn>{};
   constructor(private log: LogService,
-    private router:Router) { }
+    private router: Router) { }
 
   ngOnInit() {
     this.log.getDetails().subscribe(res => {
@@ -19,9 +20,12 @@ export class LayoutComponent implements OnInit {
     })
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('logIn');
     this.router.navigate(['login']);
+  }
+  data(a) {
+    this.info = a;
   }
 
 }
