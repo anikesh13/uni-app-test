@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LogService } from '../log.service';
 import { logIn } from '../model/logIn';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,8 @@ import { logIn } from '../model/logIn';
 })
 export class LoginComponent implements OnInit {
   public data1: logIn = <logIn>{};
-  constructor(private log: LogService) { }
+  constructor(private log: LogService,
+    private router:Router) { }
 
   ngOnInit() {
   }
@@ -19,5 +21,6 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('logIn', res.token)
       console.log(res);      
     });
+    this.router.navigate(['']);
   }
 }

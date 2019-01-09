@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { regIn } from '../model/logIn';
 import { LogService } from '../log.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -9,7 +10,8 @@ import { LogService } from '../log.service';
 })
 export class RegistrationComponent implements OnInit {
   public info: regIn = <regIn>{};
-  constructor(private log: LogService) { }
+  constructor(private log: LogService,
+    private router:Router) { }
 
   ngOnInit() {
   }
@@ -23,5 +25,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   login() {
+    this.router.navigate(['login']);
   }
 }

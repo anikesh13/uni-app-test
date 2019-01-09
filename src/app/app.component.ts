@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider, SocialUser } from 'angularx-social-login';
 import { LogService } from './log.service';
 
@@ -14,20 +15,22 @@ export class AppComponent implements OnInit {
   private user: SocialUser;
   // private loggedIn: boolean;
   constructor(private authService: AuthService,
-    private log: LogService) { }
+    private log: LogService,
+    private router: Router) { }
 
   ngOnInit() {
     this.log.getDetails().subscribe(hello => {
       console.log(hello.body);
-      
+
     })
 
-    if(localStorage.getItem('logIn')){
+    if (localStorage.getItem('logIn')) {
       console.log('log In');
-      
-    }else{
+      this.router.navigate(['']);
+    } else {
       console.log('not log in');
-      
+      this.router.navigate(['login']);
+
     }
 
     let user = JSON.parse(localStorage.getItem('list1'));
