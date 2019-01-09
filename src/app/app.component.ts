@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider, SocialUser } from 'angularx-social-login';
+import { LogService } from './log.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,14 @@ export class AppComponent implements OnInit {
   list1 = localStorage.setItem('list1', JSON.stringify('resultArray.body1'));
   private user: SocialUser;
   // private loggedIn: boolean;
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+    private log: LogService) { }
 
   ngOnInit() {
-
+    this.log.getDetails().subscribe(hello => {
+      console.log(hello.body);
+      
+    })
 
     let user = JSON.parse(localStorage.getItem('list1'));
     console.log('xxxxxxx xxxxxxxxxxxxx xxxxxxxxx logged user is ', user);
@@ -23,7 +28,7 @@ export class AppComponent implements OnInit {
 
   signInWithGoogle(): void {
     var t = this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    console.log(t);    
+    console.log(t);
   }
 
   signInWithFB(): void {
@@ -37,12 +42,14 @@ export class AppComponent implements OnInit {
 
   signInWithLinkedIn(): void {
     var t1 = this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID);
-    console.log(t1);   
+    console.log(t1);
 
-  }  
+  }
 
   signOut(): void {
     this.authService.signOut();
   }
+
+
 
 }

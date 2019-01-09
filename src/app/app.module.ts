@@ -1,12 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { ApplicationRef, DoBootstrap, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
-import { AuthServiceConfig, FacebookLoginProvider, LinkedInLoginProvider, GoogleLoginProvider, SocialLoginModule } from "angularx-social-login";
+import { AuthServiceConfig, FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider, SocialLoginModule } from "angularx-social-login";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 let config = new AuthServiceConfig([
@@ -32,14 +35,17 @@ export function provideConfig() {
   declarations: [
     AppComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     NgtUniversalModule,
     AppRoutingModule,
-    SocialLoginModule
+    SocialLoginModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {
@@ -48,4 +54,8 @@ export function provideConfig() {
     }
   ],
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+  ngDoBootstrap(appRef: ApplicationRef) {
+    appRef.bootstrap(AppComponent);
+  }
+}

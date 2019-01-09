@@ -1,5 +1,9 @@
-<button (click)="signInWithGoogle()">google</button>
+<!-- <button (click)="signInWithGoogle()">google</button>
 <button (click)="signInWithFB()">fb</button>
 <button (click)="signInWithLinkedIn()">signInWithLinkedIn</button>
-<button (click)="signOut()">signOut</button>
+<button (click)="signOut()">signOut</button> -->
+<p>
+    <a [routerLink]="['/login']">login</a> |
+    <a routerLink="registration"> registration </a>
+</p>
 <router-outlet></router-outlet>

@@ -1,4 +1,9 @@
 <h1>Dashboard Layout</h1>
+<ul>
+  <li *ngFor="let hero of heroes">
+    {{ hero.email }}
+  </li>
+</ul>
     <p>
       <a routerLink="home" >Home</a> |
       <a routerLink="admin"> Admin </a>
