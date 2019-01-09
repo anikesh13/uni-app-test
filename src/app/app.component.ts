@@ -38,23 +38,27 @@ export class AppComponent implements OnInit {
   }
 
   signInWithGoogle(): void {
-    var t = this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    console.log(t);
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.authService.authState.subscribe((user) => {
+      console.log(user);
+      this.router.navigate(['']);
+    });
   }
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe((user) => {
-      this.user = user;
-      console.log(this.user);
-      // this.loggedIn = (user != null);
+      console.log(user);
+      this.router.navigate(['']);
     });
   }
 
   signInWithLinkedIn(): void {
-    var t1 = this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID);
-    console.log(t1);
-
+    this.authService.signIn(LinkedInLoginProvider.PROVIDER_ID);
+    this.authService.authState.subscribe((user) => {
+      console.log(user);
+      this.router.navigate(['']);
+    });
   }
 
   signOut(): void {
