@@ -1,16 +1,15 @@
-import { PageNotFoundComponent } from './../page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './home/home.component';
-import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
+import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
+import { HomeComponent } from './home/home.component';
+import { LayoutComponent } from './layout/layout.component';
 
- const dashboardRoutes: Routes = [
+const dashboardRoutes: Routes = [
     {
-        path: 'dashboard',
+        path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: ':id', component: HomeComponent },
             { path: 'home', component: HomeComponent },
             { path: 'admin', component: AdminComponent }
         ]
@@ -20,6 +19,6 @@ import { AdminComponent } from './admin/admin.component';
 @NgModule({
     imports: [RouterModule.forChild(dashboardRoutes)],
     exports: [RouterModule]
-  })
+})
 
 export class DashboardRoutingModule { }

@@ -15,6 +15,13 @@ export class LayoutComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    
+    console.log(this.router.url);
+    
+    this.getdata();
+  }
+
+  getdata(){
     this.log.getDetails().subscribe(res => {
       this.heroes = res.body;
     })
@@ -31,15 +38,14 @@ export class LayoutComponent implements OnInit {
   Submit() {
     console.log(this.info);
     this.log.regDetails(this.info).subscribe(res => {
-      this.router.navigate(['']);
+      this.getdata();
+      this.info = <regIn>{};
     });
   }
 
   hel(id,i?) {
-    this.heroes.splice(i,1);
     this.log.delDetails(id).subscribe(res => {
-      console.log(res);
-      this.router.navigate(['']);
+      this.heroes.splice(i,1);
     });
   }
 }

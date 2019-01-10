@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   login(data) {
     this.log.logDetails(data).subscribe(res => {
       localStorage.setItem('logIn', res.token)
-      this.router.navigate(['']);
+      this.router.navigate(['dashboard']);
     });
   }
 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe((user3) => {
       console.log(user3);
       localStorage.setItem('logIn', user3.authToken)
-      this.router.navigate(['']);
+      this.router.navigate(['dashboard']);
     });
   }
 
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       console.log(user);
       localStorage.setItem('logIn', user.authToken)
-      this.router.navigate(['']);
+      this.router.navigate(['dashboard']);
     });
   }
 
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe((user1) => {
       console.log(user1);
       localStorage.setItem('logIn', user1.authToken)
-      this.router.navigate(['']);
+      this.router.navigate(['dashboard']);
     });
   }
 }

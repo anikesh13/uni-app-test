@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider, SocialUser } from 'angularx-social-login';
 import { LogService } from './log.service';
+import isIncognito from 'is-incognito';
+// const isIncognito = require('is-incognito');
 
 @Component({
   selector: 'app-root',
@@ -19,19 +21,24 @@ export class AppComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    isIncognito().then(hello => {
+      console.log('not private');
+    }).catch(err => {
+      console.log('private');
+    });
+
     this.log.getDetails().subscribe(hello => {
       console.log(hello.body);
-
     })
 
-    if (localStorage.getItem('logIn')) {
-      console.log('log In');
-      this.router.navigate(['']);
-    } else {
-      console.log('not log in');
-      this.router.navigate(['login']);
+    // if (localStorage.getItem('logIn')) {
+    //   console.log('log In');
+    //   // this.router.navigate(['dashboard']);
+    // } else {
+    //   console.log('not log in');
+    //   this.router.navigate(['login']);
 
-    }
+    // }
 
     let user = JSON.parse(localStorage.getItem('list1'));
     console.log('xxxxxxx xxxxxxxxxxxxx xxxxxxxxx logged user is ', user);
