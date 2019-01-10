@@ -9,7 +9,7 @@ const dashboardRoutes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: ':id', component: HomeComponent },
+            // { path: ':id', component: HomeComponent },
             { path: 'home', component: HomeComponent },
             { path: 'admin', component: AdminComponent }
         ]
