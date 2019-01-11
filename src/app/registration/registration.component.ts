@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
   Submit() {
     console.log(this.info);
     this.log.regDetails(this.info).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       
     });
   }

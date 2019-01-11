@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider, LinkedInLoginProvider, SocialUser } from 'angularx-social-login';
-import { LogService } from './log.service';
 import isIncognito from 'is-incognito';
+import { LogService } from './log.service';
+import { isPlatformBrowser } from '@angular/common';
 // const isIncognito = require('is-incognito');
+
 
 @Component({
   selector: 'app-root',
@@ -12,36 +14,43 @@ import isIncognito from 'is-incognito';
 })
 export class AppComponent implements OnInit {
   title = 'uni-app';
-  list = localStorage.setItem('list', JSON.stringify('resultArray.body'));
-  list1 = localStorage.setItem('list1', JSON.stringify('resultArray.body1'));
+  // list = localStorage.setItem('list', JSON.stringify('resultArray.body'));
+  // list1 = localStorage.setItem('list1', JSON.stringify('resultArray.body1'));
   private user: SocialUser;
   // private loggedIn: boolean;
   constructor(private authService: AuthService,
     private log: LogService,
-    private router: Router) { }
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object) { }
+
 
   ngOnInit() {
-    isIncognito().then(hello => {
-      console.log('not private');
-    }).catch(err => {
-      console.log('private');
-    });
+
 
     this.log.getDetails().subscribe(hello => {
-      console.log(hello.body);
+      // console.log(hello.body);
     })
 
-    // if (localStorage.getItem('logIn')) {
-    //   console.log('log In');
-    //   // this.router.navigate(['dashboard']);
-    // } else {
-    //   console.log('not log in');
-    //   this.router.navigate(['login']);
+    if (isPlatformBrowser(this.platformId)) {
+      isIncognito().then(hello => {
+        console.log('not private');
+      }).catch(err => {
+        console.log('private');
+      });
 
-    // }
+      if (localStorage.getItem('logIn')) {
+        console.log('log In');
+        // this.router.navigate(['dashboard']);
+      } else {
+        console.log('not log in');
+        // this.router.navigate(['login']);
 
-    let user = JSON.parse(localStorage.getItem('list1'));
-    console.log('xxxxxxx xxxxxxxxxxxxx xxxxxxxxx logged user is ', user);
+      }
+      // let user = JSON.parse(localStorage.getItem('list1'));
+      // console.log('xxxxxxx xxxxxxxxxxxxx xxxxxxxxx logged user is ', user);
+    }
+
+
   }
 
   signInWithGoogle(): void {
