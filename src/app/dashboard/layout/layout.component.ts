@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LogService } from 'src/app/log.service';
-import { regIn } from 'src/app/model/logIn';
+import { LogService } from '../../log.service';
+import { regIn } from '../../model/logIn';
 import { Router } from '@angular/router';
 
 @Component({

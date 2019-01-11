@@ -12,7 +12,7 @@ const dashboardRoutes: Routes = [
             // { path: ':id', component: HomeComponent },
             { path: 'home', component: HomeComponent },
             { path: 'admin', component: AdminComponent },
-            { path: 'option', loadChildren: './option/option.module#OptionModule', }
+            { path: 'option', loadChildren: './option/option.module#OptionModule'  }
         ]
     }
 ];
