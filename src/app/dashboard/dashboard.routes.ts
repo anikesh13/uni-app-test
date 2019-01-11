@@ -11,7 +11,8 @@ const dashboardRoutes: Routes = [
         children: [
             // { path: ':id', component: HomeComponent },
             { path: 'home', component: HomeComponent },
-            { path: 'admin', component: AdminComponent }
+            { path: 'admin', component: AdminComponent },
+            { path: 'option', loadChildren: './option/option.module#OptionModule', }
         ]
     }
 ];
