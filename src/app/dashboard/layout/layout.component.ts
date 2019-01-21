@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LogService } from '../../log.service';
 import { regIn } from '../../model/logIn';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -10,18 +10,16 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
   public heroes: Array<regIn>;
-  info: regIn = <regIn>{};
+  public info: regIn = <regIn>{};
+
   constructor(private log: LogService,
     private router: Router) { }
 
   ngOnInit() {
-    
-    console.log(this.router.url);
-    
     this.getdata();
   }
 
-  getdata(){
+  getdata() {
     this.log.getDetails().subscribe(res => {
       this.heroes = res.body;
     })
@@ -31,6 +29,7 @@ export class LayoutComponent implements OnInit {
     localStorage.removeItem('logIn');
     this.router.navigate(['login']);
   }
+
   data(a) {
     this.info = a;
   }
@@ -43,9 +42,9 @@ export class LayoutComponent implements OnInit {
     });
   }
 
-  hel(id,i?) {
+  hel(id, i?) {
     this.log.delDetails(id).subscribe(res => {
-      this.heroes.splice(i,1);
+      this.heroes.splice(i, 1);
     });
   }
 }
