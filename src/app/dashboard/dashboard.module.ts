@@ -6,7 +6,6 @@ import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 @NgModule({
@@ -16,7 +15,6 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     DashboardRoutingModule,
     FormsModule,
     MatInputModule,
-    FlexLayoutModule,
     ReactiveFormsModule
   ]
 })
