@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "npm run build:prod && npm run server",
     "start:heroku": "node dist/server",
-    "postinstall": "npm run build:ssr",
+    "postinstall": "npm run build:prod",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
