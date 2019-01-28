@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run build:prod && npm run server",
-    "start:heroku": "node dist/server",
+    "start:heroku": "node dist/server.js",
     "postinstall": "npm run build:prod",
     "build": "ng build",
     "test": "ng test",
